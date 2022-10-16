@@ -1,6 +1,20 @@
+import { useEffect, useState } from "react";
 import './App.css';
 
 function App() {
+  const [score, setScore] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
+  const [guesses, setGuesses] = useState([]);
+  
+  const makeGuess = () => {
+   
+    setGuesses(current => [...current, 'Carl']);
+    
+  }
+useEffect(() => {
+    console.log(guesses);
+  }) 
+  
   return (
     <div className="App">
       <header className="App-header">
@@ -10,18 +24,18 @@ function App() {
       <h2>Best Score: <span id="bestScore">0</span></h2>
       <h2>Score: <span id="score">0</span></h2>
       <div id="cards">
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
+        <div className="card" value="green" onClick={makeGuess}></div>
+        <div className="card"></div>
+        <div className="card"></div>
+        <div className="card"></div>
+        <div className="card"></div>
+        <div className="card"></div>
+        <div className="card"></div>
+        <div className="card"></div>
+        <div className="card"></div>
+        <div className="card"></div>
+        <div className="card"></div>
+        <div className="card"></div>
       </div>
     </div>
   );

@@ -1,0 +1,38 @@
+.App {
+  text-align: center;
+  
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 10vh;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+#cards {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: auto;
+  grid-gap: 2rem;
+  margin: auto;
+  width: 100rem;
+}
+.card {
+ width: 15rem;
+ height: 15rem;
+  background-color: blueviolet;
+  border: 2px solid black;
+}
+.card:hover {
+  background-color: red;
+}

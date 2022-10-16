@@ -1,17 +1,15 @@
 .App {
   text-align: center;
-  
+  display: flex;
+  flex-direction: column;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background-color: lightskyblue;
 }
-
 .App-header {
   background-color: #282c34;
   min-height: 10vh;
-  
+  min-width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,18 +19,39 @@
 }
 #cards {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: auto;
-  grid-gap: 2rem;
-  margin: auto;
-  width: 100rem;
+  
+  place-items: center;
+
+  width: 100vw;
+  height: 40vh;
 }
 .card {
- width: 15rem;
- height: 15rem;
-  background-color: blueviolet;
+ width: 4rem;
+ height: 4rem;
+  background-color: blue;
   border: 2px solid black;
 }
 .card:hover {
-  background-color: red;
+  box-shadow: 15px 10px 5px rgb(100, 131, 141);
+}
+p {
+  padding: 20px;
+}
+@media (min-width: 769px) {
+ h2 {
+  margin-top: -10px;
+ }
+  #cards {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+  grid-gap: 1rem;
+  
+  
+  }
+  .card {
+    width: 16rem;
+    height: 17rem;
+   }
 }

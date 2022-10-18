@@ -39,6 +39,24 @@ body {
 p {
   padding: 20px;
 }
+.green {
+  background-color: green;
+}
+.blue {
+  background-color: blue;
+}
+.yellow {
+  background-color: yellow;
+}
+.purple {
+  background-color: purple;
+}
+.orange {
+  background-color: orange;
+}
+.pink {
+  background-color: pink;
+}
 @media (min-width: 769px) {
  h2 {
   margin-top: -10px;

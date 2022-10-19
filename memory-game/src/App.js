@@ -31,10 +31,27 @@ setScore(score+1)
 
     }
     
-
+    randomOrder();
     //if the current guess class equals a class/element in the previousclass array
     //score is set to 0
     //can use guesses as a variable array
+  }
+  const randomOrder = () => {
+    
+    let classesArray = ['card blue', 'card green', 'card yellow', 'card purple', 'card orange', 'card pink'];
+  let divCards = document.querySelectorAll(".card");
+  
+  for(let x of divCards){
+
+  const randomIndex = Math.floor(Math.random() * classesArray.length);
+  x.className = classesArray[randomIndex];
+  //const randomClass = ;
+
+  //const test = document.createElement('div');
+  //select all div cards and 
+  //use below code
+  //test.className = randomClass;
+  }
   }
 useEffect(() => {
   console.log(guesses);

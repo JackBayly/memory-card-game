@@ -4,75 +4,36 @@ import './App.css';
 function App() {
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
-  const [guesses, setGuesses] = useState([]);
-  const [currentGuess, setCurrentGuess] = useState("");
+  const [guesses, setGuesses] = useState(() => new Set());;
 
   const makeGuess = (event) => {
-  
-   let divClass = event.currentTarget.id;
-    setGuesses(current => [...current, divClass]);
-    setCurrentGuess(divClass)
-    if(guesses.length===0){
-      setScore(score+1);
-    }
-    
-    //loop through guesses array
-    for(let x = 0;x<guesses.length; x++){
-     
-       if (guesses[x]=== currentGuess){
-      //  setScore(0);
-    // setGuesses([]);
-     
-        
-      } else if ((guesses[x]!== currentGuess)||(guesses.length == 0)||(guesses[x]==undefined)){
-console.log("It works!")
-setScore(score+1)
+    let divClass = event.currentTarget.className;
+    if (guesses.has(divClass)) {
+      setScore(0);
+      guesses.clear();
+    } else {
+      setScore(score + 1);
+      const addItem = divClass => {
+        setGuesses(prev => new Set(prev).add(divClass));
       }
-
+      addItem(divClass);
     }
-    
     randomOrder();
-    //if the current guess class equals a class/element in the previousclass array
-    //score is set to 0
-    //can use guesses as a variable array
   }
   const randomOrder = () => {
-    
-    let classesArray = ['card blue', 'card green', 'card yellow', 'card purple', 'card orange', 'card pink'];
-  let divCards = document.querySelectorAll(".card");
-  
-  for(let x of divCards){
+    let classesArray = ['card blue', 'card green', 'card yellow', 'card purple', 'card orange', 'card pink', 'card red', 'card white', 'card grey', 'card black'];
+    let divCards = document.querySelectorAll(".card");
+    for (let x of divCards) {
+      const randomIndex = Math.floor(Math.random() * classesArray.length);
+      x.className = classesArray[randomIndex];
+    }
+  }
+  useEffect(() => {
+    if (score > bestScore) {
+      setBestScore(score);
+    }
+  }, [score]);
 
-  const randomIndex = Math.floor(Math.random() * classesArray.length);
-  x.className = classesArray[randomIndex];
-  //const randomClass = ;
-
-  //const test = document.createElement('div');
-  //select all div cards and 
-  //use below code
-  //test.className = randomClass;
-  }
-  }
-useEffect(() => {
-  console.log(guesses);
-
- // console.log(currentGuess);
-  
-  if(score>bestScore){
-    setBestScore(score);
-  }
-  /*if (guesses.length !== new Set(guesses).size) {
-    console.log(true);
-    setScore(score+1)
-  } else {
-    console.log(false);
-    setScore(0)
-  }
-*/
-  
-  });
-   
-  
   return (
     <div className="App">
       <header className="App-header">
@@ -82,12 +43,12 @@ useEffect(() => {
       <h2>Best Score: <span id="bestScore">{bestScore}</span></h2>
       <h2>Score: <span id="score">{score}</span></h2>
       <div id="cards">
-        <div className="card green" id="green" onClick={makeGuess}></div>
-        <div className="card green" id="green" onClick={makeGuess}></div>
-        <div className="card blue" id="blue" onClick={makeGuess}></div>
-        <div className="card blue" id="blue" onClick={makeGuess}></div>
-        <div className="card yellow" id="yellow" onClick={makeGuess}></div>
-        <div className="card yellow" id="yellow" onClick={makeGuess}></div>
+        <div className="card green" onClick={makeGuess}></div>
+        <div className="card green" onClick={makeGuess}></div>
+        <div className="card blue" onClick={makeGuess}></div>
+        <div className="card blue" onClick={makeGuess}></div>
+        <div className="card yellow" onClick={makeGuess}></div>
+        <div className="card yellow" onClick={makeGuess}></div>
         <div className="card purple" onClick={makeGuess}></div>
         <div className="card purple" onClick={makeGuess}></div>
         <div className="card orange" onClick={makeGuess}></div>
